@@ -1,0 +1,284 @@
+/* =========================
+   RESET Y VARIABLES
+========================= */
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a24;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3c2;
+  --text-muted: #7d7d90;
+
+  --blue: #3b82f6;
+  --blue-light: #60a5fa;
+  --red: #ef4444;
+  --orange-light: #fbd38d; /* Añadida para el título del hero */
+
+  --border: rgba(255,255,255,0.08);
+
+  --radius: 18px;
+  --radius-sm: 10px;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER & NAVBAR
+========================= */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content{
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo{
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.logo span{
+  background: linear-gradient(135deg, var(--blue), var(--red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-links{
+  display: flex;
+  gap: .7rem;
+  flex-wrap: wrap;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: var(--text-secondary);
+  padding: .65rem 1.1rem;
+  border-radius: 999px;
+  transition: .3s ease;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover{
+  background: var(--bg-card);
+  color: white;
+  border-color: var(--border);
+}
+
+.nav-link.active{
+  background: rgba(249, 116, 22, 0.289);
+  color: rgb(249, 131, 46);
+  border-color: rgba(249,115,22,.5);
+}
+
+/* =========================
+   MAIN CONTENT STRUCTURE
+========================= */
+main{
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* =========================
+   HERO MUSICA (ORANGE)
+========================= */
+.module-hero{
+  text-align: center;
+  padding: 4rem 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.module-hero.orange{
+  background: linear-gradient(135deg, rgba(249,115,22,.15), rgba(251,146,60,.05));
+  border: 1px solid rgba(249,115,22,.15);
+}
+
+.module-hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(249,115,22,.2), transparent 70%);
+}
+
+.module-hero h2{
+  position: relative;
+  z-index: 2;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: var(--orange-light);
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   GRID MUSICA
+========================= */
+.music-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* =========================
+   TARJETAS DE MÚSICA
+========================= */
+.music-card{
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: .35s ease;
+  position: relative;
+}
+
+.music-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: rgba(249,115,22,.5);
+}
+
+/* =========================
+   PORTADA (COVER)
+========================= */
+.music-cover{
+  height: 240px; 
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(249,115,22,.15), #12121a);
+  overflow: hidden;
+}
+
+.music-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción de la carátula sin deformarla */
+  transition: .35s ease;
+}
+
+/* Efecto hover en la portada */
+.music-card:hover .music-cover img{
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
+
+/* =========================
+   INFORMACIÓN Y REPRODUCTOR
+========================= */
+.music-info{
+  padding: 1.6rem;
+  text-align: center;
+}
+
+.music-info h4{
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  transition: .3s ease;
+}
+
+.music-card:hover .music-info h4{
+  color: var(--orange-light);
+}
+
+.music-player {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+/* reproductor mod dark */
+.music-player::-webkit-media-controls-enclosure {
+  background-color: var(--bg-secondary);
+}
+
+.music-info p{
+  color: var(--text-secondary);
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER (MINIMALISTA)
+========================= */
+.footer-bottom{
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.footer-bottom p{
+  color: var(--text-muted);
+  font-size: .95rem;
+}
+
+.footer-dots{
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-dots span{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.footer-dots span:nth-child(1){ background: var(--blue); }
+.footer-dots span:nth-child(2){ background: var(--red); }
+.footer-dots span:nth-child(3){ background: var(--blue-light); }
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .header-content{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links{
+    justify-content: center;
+  }
+
+  .music-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .music-cover{
+    height: 220px;
+  }
+}
